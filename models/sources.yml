@@ -3,15 +3,17 @@ version: 2
 sources:
 
   - name: eth
-    quoting:
-      database: true
-      schema: true
+ #   quoting:
+ #     database: true
+ #     schema: true
     database: eth  
     schema: eth_schema
 
     tables:
       - name: contracts
         identifier: cnt
+      - name: contracts_clone
+        identifier: cnt_cln 
       - name: token_transfers
       - name: transactions
 
