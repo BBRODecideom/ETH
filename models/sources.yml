@@ -2,7 +2,7 @@ version: 2
 
 sources:
 
-  - name: eth
+- name: eth
  #   quoting:
  #     database: true
  #     schema: true
@@ -11,9 +11,9 @@ sources:
 
     tables:
       - name: contracts
-        identifier: cnt
+#        identifier: cnt
       - name: contracts_clone
-        identifier: cnt_cln 
+#        identifier: cnt_cln 
       - name: token_transfers
       - name: transactions
 

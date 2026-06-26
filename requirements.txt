@@ -1,0 +1,11 @@
+-- Vérifier la version python 
+python --version
+-- Installer la machine env
+python -m venv venv
+-- Activer la machine 
+venv\Scripts\activate
+
+-- Installer dbt core et le connecteur snow
+pip install dbt-core==1.9.4 dbt-snowflake==1.9.4
+-- Voir comment fonctionne core v2
+winget install dbtlabs.dbt
