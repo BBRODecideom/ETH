@@ -1,19 +1,19 @@
 version: 2
 
 sources:
-
-- name: eth
- #   quoting:
- #     database: true
- #     schema: true
-    database: eth  
+  - name: eth
+    # quoting:
+    #   database: true
+    #   schema: true
+    description: Sources of the data in the Ethereum
     schema: eth_schema
-
     tables:
-      - name: contracts
-#        identifier: cnt
-      - name: contracts_clone
-#        identifier: cnt_cln 
-      - name: token_transfers
-      - name: transactions
+     - name : contracts
+       identifier: contracts   
+     - name : contracts_clone
+     - name : token_transfers
+       config:
+        freshness: null
+     - name : transactions
+       identifier: transactions
 

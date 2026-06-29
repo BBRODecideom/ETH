@@ -1,2 +1,2 @@
-Select * from {{ source('eth', 'contracts') }}
+select * from {{ source('eth', 'contracts') }}
 

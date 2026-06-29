@@ -23,8 +23,9 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 seeds:
-  +database: seeds
-  +schema: static
+  # +database: seeds
+  # +schema: static
+  +schema: seeds
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -48,8 +49,12 @@ models:
       +schema: marts  # example: DBT_BBRO_marts for the Custom Schema
       stablecoin_activity_per_day: 
         +post-hook:
-          - GRANT USAGE ON DATABASE DBT TO TESTER ;
-          - GRANT USAGE ON SCHEMA DBT_BBRO TO TESTER ;
+          - GRANT USAGE ON DATABASE {{ target.database }} TO TESTER ;
+          - GRANT USAGE ON SCHEMA {{ target.schema }} TO TESTER ;
+    # Push dbt doc to database metadata. 
+    +persist_docs:
+      relation: true
+      columns: true
 
 
 vars:
