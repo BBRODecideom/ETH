@@ -51,6 +51,13 @@ models:
         +post-hook:
           - GRANT USAGE ON DATABASE {{ target.database }} TO TESTER ;
           - GRANT USAGE ON SCHEMA {{ target.schema }} TO TESTER ;
+          # I don't want to create this role yet
+        #   - GRANT USAGE ON DATABASE {{ target.database }} TO BA ;
+        #   - GRANT USAGE ON SCHEMA {{ target.schema }} TO BA ; 
+        # # Secondary config. priority to config find in sql marts.  
+        # +grants:
+        #   select: ['BA']
+
     # Push dbt doc to database metadata. 
     +persist_docs:
       relation: true
