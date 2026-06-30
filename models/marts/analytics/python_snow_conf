@@ -1,0 +1,9 @@
+import snowflake.snowpark.functions as f
+
+def model(dbt, session):
+    # dbt looks for this 'model' function specifically
+    dbt.config(materialized="table")
+    
+    # Simple test: return an existing table
+    return dbt.ref("some_existing_model")
+

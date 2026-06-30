@@ -23,8 +23,9 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 seeds:
-  +database: seeds
-  +schema: static
+  # +database: seeds
+  # +schema: static
+  +schema: seeds
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -47,8 +48,29 @@ models:
         - PowerBi
       +schema: marts  # example: DBT_BBRO_marts for the Custom Schema
 
+      analytics:
+        stablecoin_activity_per_day: 
+          +post-hook:
+            - GRANT USAGE ON DATABASE {{ target.database }} TO TESTER ;
+            - GRANT USAGE ON SCHEMA {{ target.schema }} TO TESTER ;
+            # I don't want to create this role yet
+          #   - GRANT USAGE ON DATABASE {{ target.database }} TO BA ;
+          #   - GRANT USAGE ON SCHEMA {{ target.schema }} TO BA ; 
+            - "{{ create_latest_version_view() }}"
+          # # Secondary config. priority to config find in sql marts.  
+          # +grants:
+          #   select: ['BA']
+
+    # Push dbt doc to database metadata. 
+    +persist_docs:
+      relation: true
+      columns: true
+
 
 vars:
   token_name_var: 'token'
   token_address_var: '0x50327c6c5a14dcade707abad2e27eb517df87ab5'
   token_decimals_var : '6'
+
+
+restrict-access: True

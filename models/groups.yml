@@ -1,0 +1,11 @@
+
+groups:
+  - name: analytics_engineer
+    owner:
+      name: Engineering Team
+      email: analytics@dbt.com
+
+  - name: fraud_risk
+    owner:
+      name: Fraud Team
+      email: fraud@dbt.com
