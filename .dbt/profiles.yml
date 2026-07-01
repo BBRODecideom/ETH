@@ -8,6 +8,5 @@ eth:
       warehouse: compute_wh
       account: "{{ env_var('DBT_ACCOUNT') }}"
       user: "{{ env_var('DBT_USER') }}"
-      password: "{{ env_var('DBT_PASSWORD') }}"
       private_key_path: "{{ env_var('DBT_PRIVATE_KEY_PATH') }}"
       threads: 8
