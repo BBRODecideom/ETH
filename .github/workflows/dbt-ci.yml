@@ -60,7 +60,7 @@ jobs:
     # clone incremental first
       - name: Clone impacted incremental models into PR schema
         run: |
-          dbt clone 
+          dbt clone \
           --target ci \
           --state ./state \
           --defer \
