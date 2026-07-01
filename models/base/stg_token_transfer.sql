@@ -1,4 +1,4 @@
-{{ config(tags=['stablecoin']) }}
+{{ config(materialized = 'view' , tags=['stablecoin']) }}
 
 select
     date,

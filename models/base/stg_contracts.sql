@@ -1,4 +1,4 @@
-{{config(materialized='view') }}
+{{config(materialized='incremental', incremental_strategy='delete+insert', on_schema_change='fail' ) }}
 
 select
     address,
