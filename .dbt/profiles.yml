@@ -4,7 +4,7 @@ eth:
     ci:
       type: snowflake
       database: decideom_lyon #dbt
-      schema: dbt_snow_ci 
+      schema: "{{ env_var('DBT_SCHEMA') }}" 
       warehouse: compute_wh
       account: "{{ env_var('DBT_ACCOUNT') }}"
       user: "{{ env_var('DBT_USER') }}"
