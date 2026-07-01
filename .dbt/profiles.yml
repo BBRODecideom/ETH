@@ -1,0 +1,13 @@
+eth:
+  target: ci
+  outputs:
+    ci:
+      type: snowflake
+      database: decideom_lyon #dbt
+      schema: dbt_snow_ci 
+      warehouse: compute_wh
+      account: "{{ env_var('DBT_ACCOUNT') }}"
+      user: "{{ env_var('DBT_USER') }}"
+      role: "{{ env_var('DBT_ROLE') }}"
+      private_key_path: "{{ env_var('DBT_PRIVATE_KEY_PATH') }}"
+      threads: 8
