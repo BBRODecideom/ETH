@@ -54,6 +54,9 @@ jobs:
     #  Start bulding slim ci
       - name: Create state manifest from master
         run: |
+          # Force la suppression de toutes les modifications locales du pipeline
+          git reset --hard HEAD
+          git clean -fd
           git checkout master
           dbt deps
           dbt parse --target prod
