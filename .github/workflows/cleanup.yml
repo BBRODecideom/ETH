@@ -38,5 +38,5 @@ jobs:
             chmod 600 ~/.dbt/rsa_key.p8
         - name: Cleanup
           run: |
-            dbt run-operation pr_schema_cleanup --target ci --args "{'database_to_clean': 'CI','age_in_days': -1}"
+            dbt run-operation pr_schema_cleanup --target ci --args "{'database_to_clean': 'DECIDEOM_LYON','age_in_days': -1}"
 
