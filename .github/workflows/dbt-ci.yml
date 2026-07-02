@@ -34,6 +34,7 @@ jobs:
           # Older verion of dbt used at the beginning of this course 
           # pip install dbt-core==1.9.4 dbt-snowflake==1.9.4
           # Trying with newest version (big changes) be carefull we need to match local version and ci/cd version
+          # Please
           pip install --pre dbt-core "dbt-snowflake>=1.12.0b1" --pre
 
       - name: Set up dbt profile + private key
