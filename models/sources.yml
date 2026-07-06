@@ -7,6 +7,13 @@ sources:
     #   schema: true
     description: Sources of the data in the Ethereum
     schema: eth_schema
+
+    config:
+      freshness:
+        warn_after: {count: 12, period: hour}
+        error_after: {count: 24, period: hour}
+      loaded_at_field: date
+
     tables:
      - name : contracts
        identifier: contracts
