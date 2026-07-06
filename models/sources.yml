@@ -16,4 +16,11 @@ sources:
         freshness: null
      - name : transactions
        identifier: transactions
+       columns:
+        - name: hash
+          description: > 
+            This is a very long multiline description
+            identifier of each transactiont
+          data_tests:
+            - unique
 
