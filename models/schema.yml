@@ -111,3 +111,17 @@ unit_tests:
       rows:
         - {transaction_category: 'contract_creation'}
 # Unit test only return 0 or 1. Test pass or failed
+
+
+exposures:
+  # Mandatory fields are : name, type, owner
+  - name: eth_activity_per_day
+    type: dashboard
+
+    depends_on:
+      - ref('int_transactions_enriched')
+
+    owner:
+      name: BBrossillon
+      email: bbrossillon@udemy.com
+
