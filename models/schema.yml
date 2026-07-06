@@ -16,6 +16,8 @@ models:
     description: Transactions in the Ethereum blockchain
     columns:
     - name: hash
+      config: 
+        tags: ['keys']
       description: > 
         This is a very long multiline description
         identifier of each transaction
