@@ -1,6 +1,17 @@
 version: 2
 
 models:
+
+  - name: stg_token_transfer
+    description: Transactions in the Ethereum blockchain
+    columns:
+    - name: transaction_hash
+      data_tests:
+        - relationships:
+            arguments:
+              to: ref('stg_transactions')
+              field: hash
+
   - name: stg_transactions
     description: Transactions in the Ethereum blockchain
     columns:
@@ -11,6 +22,20 @@ models:
       data_tests:
         - unique
         - not_null
+
+  - name: int_transactions_enriched
+    description: Transactions in the Ethereum blockchain, already transforme
+    columns:
+    - name: value
+      description: > 
+        This is a very long multiline description
+        identifier of each transaction
+      data_tests:
+        - assert_value_amount_positive:
+            arguments:
+              #to: 
+              field: block_number
+
 
   - name: stablecoin_activity_per_day
     latest_version: 1
@@ -31,6 +56,10 @@ models:
       - name: type
         data_type: varchar(150) # dbt does not check the size, precision or scale
         description: ""
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Hybrid", "Crypto-backed", "Fiat-backed"]
 
       - name: symbol
         data_type: varchar
