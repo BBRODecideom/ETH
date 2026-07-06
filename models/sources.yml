@@ -9,9 +9,11 @@ sources:
     schema: eth_schema
     tables:
      - name : contracts
-       identifier: contracts   
+       identifier: contracts
+       description  : This is my contracts table
      - name : contracts_clone
      - name : token_transfers
+       description  : This is my token transfers table
        config:
         freshness: null
      - name : transactions
