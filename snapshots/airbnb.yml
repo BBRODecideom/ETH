@@ -1,0 +1,10 @@
+snapshots:
+  - name: airbnb_snap
+    relation: source('airbnb', 'apartments_listings')
+    config:
+      strategy: timestamp #check
+      unique_key: listing_id
+      updated_at: updated_at #Not use for check strategy
+      hard_deletes: "new_record"
+      check_cols: 'all'
+

@@ -33,3 +33,13 @@ sources:
           data_tests:
             - unique
 
+  - name: airbnb
+    database: aibnb
+    description: Sources of the data added for snapshot testing
+    schema: airbnb
+    tables: 
+     - name : apartments_listings
+       description  : This is my listings table
+     - name : reviews
+       description  : This is my reviews table
+
