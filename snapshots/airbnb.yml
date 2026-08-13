@@ -2,6 +2,7 @@ snapshots:
   - name: airbnb_snap
     relation: source('airbnb', 'apartments_listings')
     config:
+      # not mandatory schema: airbnb_snaps
       strategy: timestamp #check
       unique_key: listing_id
       updated_at: updated_at #Not use for check strategy

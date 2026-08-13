@@ -27,7 +27,9 @@ seeds:
   # +schema: static
   +schema: seeds
 
+# use for store failures only
 tests:
+  +database: null
   +schema: null
 
 # Configuring models
@@ -68,6 +70,13 @@ models:
     +persist_docs:
       relation: true
       columns: true
+
+  legacy:
+    +materialized: table
+    +tags: ['legacy']
+    +schema: legacy  # example: DBT_BBRO_legacy for the Custom Schema
+    # Used to exclude this models from the run commands
+    +enabled: false    
 
 
 vars:

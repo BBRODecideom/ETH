@@ -11,6 +11,9 @@ models:
             arguments:
               to: ref('stg_transactions')
               field: hash
+              # C'est ici que la condition est définie pour s'executer en prod
+              config:
+                enabled: "{{ target.name == 'prod' }}"
 
   - name: stg_transactions
     description: Transactions in the Ethereum blockchain
@@ -22,7 +25,12 @@ models:
         This is a very long multiline description
         identifier of each transaction
       data_tests:
-        - unique
+        # Basic unique + not null tests
+        - unique:
+            config:
+              severity: warn
+              warn_if: ">10"
+              error_if: ">1000"
         - not_null
         - relationships:
             arguments:
@@ -44,6 +52,7 @@ models:
         This is a very long multiline description
         identifier of each transaction
       data_tests:
+      # Specific generic test deploy in tests folder
         - assert_value_amount_positive:
             arguments:
               #to: 
@@ -51,8 +60,7 @@ models:
 
 
   - name: stablecoin_activity_per_day
-    latest_version: 1
-    description: We are going to applied a contract
+
     config:
       contract:
         enforced: true
@@ -81,7 +89,9 @@ models:
       - name: total_usd_value
         data_type: float
         description: ""
-
+    
+    latest_version: 1
+    description: We are going to applied a contract
     versions:
       - v: 1
         # Will match above definition
@@ -108,6 +118,7 @@ unit_tests:
       - input: ref('stg_token_transfer')
         rows:
           - {transaction_hash: 'bla'}
+          
 
     expect:
       rows:
@@ -122,6 +133,17 @@ exposures:
 
     depends_on:
       - ref('int_transactions_enriched')
+
+    owner:
+      name: BBrossillon
+      email: bbrossillon@udemy.com
+
+  # Mandatory fields are : name, type, owner
+  - name: token_activity_per_day
+    type: dashboard
+
+    depends_on:
+      - ref('stg_token_transfer')
 
     owner:
       name: BBrossillon

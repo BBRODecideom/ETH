@@ -28,6 +28,11 @@ sources:
      - name : contracts_clone
      - name : token_transfers
        description  : This is my token transfers table
+       quoting:
+        identifier: true
+       # What is the matter ? 
+       # Null to unset the check.
+       # Neet to add quoting property to ensure a name is read exactly as written
        config:
         freshness: null
      - name : transactions
@@ -36,17 +41,21 @@ sources:
         - name: hash
           description: > 
             This is a very long multiline description
-            identifier of each transactiont
+            identifier of each transaction
           data_tests:
             - unique
 
   - name: airbnb
-    database: aibnb
+    # Le nom de la base de données s'adaptera automatiquement : 
+    # "raw_dev" si dbt run -t dev, "raw_prod" si dbt run -t prod
+    database: "airbnb_{{ target.name }}"
+    #database: airbnb
+    
     description: Sources of the data added for snapshot testing
     schema: airbnb
     tables: 
      - name : apartments_listings
-       description  : This is my listings table
+       description: &airbnb_desc "This is my listings table"
      - name : reviews
-       description  : This is my reviews table
+       description: *airbnb_desc
 
