@@ -4,3 +4,11 @@ packages:
 
   - package: dbt-labs/audit_helper
     version: 0.14.0
+
+# packages from git:
+#  - git: "git@github.com:your-org/your-private-dbt-package.git"
+# with specific version
+  # - package: dbt-labs/dbt_utils
+  #   version: ">=0.8.0,<0.9.0"
+
+

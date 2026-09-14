@@ -1,4 +1,4 @@
-{{ config(tags=['stablecoin']) }}
+{{ config(materialized = 'view' , tags=['stablecoin']) }}
 
 select
     date,
@@ -9,10 +9,10 @@ from {{ source('eth', 'token_transfers') }}
 
 {%- if target.name == 'dev' %}
 
-where date >= dateadd('day', -3, current_date)
+where date >= dateadd('day', -15, current_date)
 
 {%- elif target.name == 'prod' %}
 
-where date >= dateadd('day', -15, current_date)
+where date >= dateadd('day', -30, current_date)
 
 {%- endif -%}
